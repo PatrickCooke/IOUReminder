@@ -19,10 +19,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var iouArray = [IOUReminder]()
     @IBOutlet private weak var iouTableView: UITableView!
+    var sortmode = Bool()
 
     
     //MARK: - Interactivity Methods
     
+    @IBAction func sortTable(sender: UIBarButtonItem) {
+        if sortmode {
+            sortmode = false
+            self.refreshTableData()
+        } else {
+            sortmode = true
+            self.refreshTableData()
+        }
+    }
     
     
     //MARK: - Segue Methods
@@ -50,7 +60,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let currentIOU = iouArray[indexPath.row]
         cell.textLabel!.text = currentIOU.iouTitle
-        cell.detailTextLabel!.text = String(currentIOU.iouDate!)
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "h:mm EEEE, MMM d, yyyy"
+        let timestring = formatter.stringFromDate(currentIOU.iouDate!)
+        cell.detailTextLabel!.text = timestring
         return cell
     }
     
@@ -58,7 +71,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func fetchEntries() -> [IOUReminder]? {
         let fetchRequest = NSFetchRequest(entityName: "IOUReminder")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "iouTitle", ascending: true)]
+        if sortmode == true {
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "iouTitle", ascending: true)]
+        } else {
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "iouDate", ascending: true)]
+        }
         do {
             let tempArray = try managedObjectContext.executeFetchRequest(fetchRequest) as! [IOUReminder]
             return tempArray

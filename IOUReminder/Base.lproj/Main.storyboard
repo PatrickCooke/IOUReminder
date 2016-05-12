@@ -67,6 +67,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="IOUReminder" id="DD5-so-Tq9">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="7TG-LV-krv">
+                            <connections>
+                                <action selector="sortTable:" destination="BYZ-38-t0r" id="Qb1-0l-nJY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lsw-ln-dvI">
                             <connections>
                                 <segue destination="oMJ-rW-4rm" kind="show" identifier="addNewIOU" id="bsr-Wi-uwf"/>
@@ -152,7 +157,7 @@
                                     <constraint firstAttribute="width" secondItem="NeY-9n-9jG" secondAttribute="height" multiplier="49:31" id="RuP-Ln-Wqt"/>
                                 </constraints>
                             </switch>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-rR-Gfb">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-rR-Gfb">
                                 <rect key="frame" x="0.0" y="355" width="600" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Ztc-cI-KzG"/>
