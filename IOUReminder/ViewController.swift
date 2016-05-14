@@ -155,7 +155,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         checkEKAuthorizationStatus(.Event)
         checkEKAuthorizationStatus(.Reminder)
-        //tempAddRecords()
+        //tempAddRecords() don't need anymore
     }
     
     override func viewWillAppear(animated: Bool) {
