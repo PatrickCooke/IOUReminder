@@ -77,8 +77,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-
-    
     //MARK: - Fetch Data Method
     
     func fetchEntries() -> [IOUReminder]? {
