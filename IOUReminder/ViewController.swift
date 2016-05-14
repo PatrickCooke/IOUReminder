@@ -65,8 +65,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel!.text = currentIOU.iouTitle
         let formatter = NSDateFormatter()
         formatter.dateFormat = "h:mm EEEE, MMM d, yyyy"
-        let timestring = formatter.stringFromDate(currentIOU.iouDate!)
-        cell.detailTextLabel!.text = timestring
+        if let currentTime = currentIOU.iouDate {
+            let timestring = formatter.stringFromDate(currentTime)
+            cell.detailTextLabel!.text = timestring
+        }
         if (currentIOU.iouPaidStatus == true) {
             cell.backgroundColor = UIColor .grayColor()
         }else {

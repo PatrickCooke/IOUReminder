@@ -10,13 +10,13 @@ import UIKit
 import EventKit
 import CoreData
 
-class IOUDetailViewController: UIViewController {
+class IOUDetailViewController: UIViewController, UITextFieldDelegate {
 
     let eventStore = EKEventStore()
     var selectedIOU :IOUReminder?
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    @IBOutlet weak var titleTextfield: UITextField!
+    @IBOutlet weak var titleTextfield: UITextField! = nil
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var frequencySegBar: UISegmentedControl!
     @IBOutlet weak var reminderDatePicker: UIDatePicker!
@@ -24,38 +24,124 @@ class IOUDetailViewController: UIViewController {
     private var frequencyArray = ["Once", "Weekly on day", "Monthly on Day"]
     
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        titleTextfield.resignFirstResponder()
+        return true;
+    }
     
+    //MARK: - Reoccuring Reminder Methods
+    
+    private func createNewReminder() {
+        if paidSwitch.on {
+            switch frequencySegBar.selectedSegmentIndex {
+            case 0:
+                print("reminder finished")
+            case 1:
+                print("add a reminder in 1 week")
+                let entityDescription = NSEntityDescription.entityForName("IOUReminder", inManagedObjectContext: managedObjectContext)!
+                selectedIOU = IOUReminder(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+                selectedIOU!.iouTitle = titleTextfield.text
+                selectedIOU!.iouDate = dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 7)
+                selectedIOU!.iouFrequency = frequencySegBar.selectedSegmentIndex
+                selectedIOU!.iouTimeInAdvance = reminderDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 7)
+                selectedIOU!.iouPaidStatus = false
+                
+                let reminder = EKReminder(eventStore: eventStore)
+                reminder.calendar = eventStore.defaultCalendarForNewReminders()
+                if let remindTitle = titleTextfield.text {
+                    reminder.title = remindTitle
+                    let alarm = EKAlarm(absoluteDate: reminderDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 7))
+                    reminder.addAlarm(alarm)
+                    do {
+                        try eventStore.saveReminder(reminder, commit: true)
+                    } catch {
+                        print("Got Error")
+                    }
+                }
+                let calEvent = EKEvent(eventStore: eventStore)
+                calEvent.calendar = eventStore.defaultCalendarForNewEvents
+                calEvent.title = titleTextfield.text!
+                calEvent.startDate = dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 7)
+                calEvent.endDate = (dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 7 + 3600))
+                do {
+                    try eventStore.saveEvent(calEvent, span: .ThisEvent, commit: true)
+                } catch {
+                    print("Got Error")
+                }
+                
+            case 2:
+                print("add a reminder in 1 month")
+                let entityDescription = NSEntityDescription.entityForName("IOUReminder", inManagedObjectContext: managedObjectContext)!
+                selectedIOU = IOUReminder(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+                selectedIOU!.iouTitle = titleTextfield.text
+                selectedIOU!.iouDate = dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 30)
+                selectedIOU!.iouFrequency = frequencySegBar.selectedSegmentIndex
+                selectedIOU!.iouTimeInAdvance = reminderDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 30)
+                selectedIOU!.iouPaidStatus = false
+                
+                let reminder = EKReminder(eventStore: eventStore)
+                reminder.calendar = eventStore.defaultCalendarForNewReminders()
+                if let remindTitle = titleTextfield.text {
+                    reminder.title = remindTitle
+                    let alarm = EKAlarm(absoluteDate: reminderDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 30))
+                    reminder.addAlarm(alarm)
+                    do {
+                        try eventStore.saveReminder(reminder, commit: true)
+                    } catch {
+                        print("Got Error")
+                    }
+                }
+                let calEvent = EKEvent(eventStore: eventStore)
+                calEvent.calendar = eventStore.defaultCalendarForNewEvents
+                calEvent.title = titleTextfield.text!
+                calEvent.startDate = dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 30)
+                calEvent.endDate = (dueDatePicker.date.dateByAddingTimeInterval(60 * 60 * 24 * 30 + 3600))
+                do {
+                    try eventStore.saveEvent(calEvent, span: .ThisEvent, commit: true)
+                } catch {
+                    print("Got Error")
+                }
+            default:
+                print("Never Should Happen")
+            }
+        } else {
+            print("not finished")
+            // saving reminder
+            let reminder = EKReminder(eventStore: eventStore)
+            reminder.calendar = eventStore.defaultCalendarForNewReminders()
+            if let remindTitle = titleTextfield.text {
+                reminder.title = remindTitle
+                let alarm = EKAlarm(absoluteDate: reminderDatePicker.date)
+                reminder.addAlarm(alarm)
+                do {
+                    try eventStore.saveReminder(reminder, commit: true)
+                } catch {
+                    print("Got Error")
+                }
+            }
+            
+            //saving calendar event
+            let calEvent = EKEvent(eventStore: eventStore)
+            calEvent.calendar = eventStore.defaultCalendarForNewEvents
+            calEvent.title = titleTextfield.text!
+            calEvent.startDate = dueDatePicker.date
+            calEvent.endDate = (dueDatePicker.date.dateByAddingTimeInterval(60 * 60))
+            do {
+                try eventStore.saveEvent(calEvent, span: .ThisEvent, commit: true)
+            } catch {
+                print("Got Error")
+            }
+        }
+        
+    }
     
     //MARK: - Interactivity Methods
     
     func saveAndPop() {
         appDelegate.saveContext()
         self.navigationController!.popViewControllerAnimated(true)
-        
-        // saving reminder
-        let reminder = EKReminder(eventStore: eventStore)
-        reminder.calendar = eventStore.defaultCalendarForNewReminders()
-        if let remindTitle = titleTextfield.text {
-            reminder.title = remindTitle
-            let alarm = EKAlarm(absoluteDate: reminderDatePicker.date)
-            reminder.addAlarm(alarm)
-        } // not currently working
-        
-        
-        
-        //saving calendar event
-        let calEvent = EKEvent(eventStore: eventStore)
-        calEvent.calendar = eventStore.defaultCalendarForNewEvents
-        calEvent.title = titleTextfield.text!
-        calEvent.startDate = dueDatePicker.date
-        calEvent.endDate = (dueDatePicker.date.dateByAddingTimeInterval(60 * 60))
-        do {
-            try eventStore.saveEvent(calEvent, span: .ThisEvent, commit: true)
-        } catch {
-            print("Got Error")
-        }
     }
-    
 
     @IBAction func saveButton(sender: UIBarButtonItem) {
         selectedIOU!.iouTitle = titleTextfield.text
@@ -67,6 +153,7 @@ class IOUDetailViewController: UIViewController {
         } else {
             selectedIOU!.iouPaidStatus = false
         }
+        createNewReminder()
         self.saveAndPop()
     }
     
