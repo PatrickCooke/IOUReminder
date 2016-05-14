@@ -10,25 +10,19 @@ import UIKit
 import EventKit
 import CoreData
 
-class IOUDetailViewController: UIViewController, UITextFieldDelegate {
+class IOUDetailViewController: UIViewController {
 
     let eventStore = EKEventStore()
     var selectedIOU :IOUReminder?
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    @IBOutlet weak var titleTextfield: UITextField! = nil
+    @IBOutlet weak var titleTextfield: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var frequencySegBar: UISegmentedControl!
     @IBOutlet weak var reminderDatePicker: UIDatePicker!
     @IBOutlet weak var paidSwitch: UISwitch!
     private var frequencyArray = ["Once", "Weekly on day", "Monthly on Day"]
-    
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool
-    {
-        titleTextfield.resignFirstResponder()
-        return true;
-    }
+
     
     //MARK: - Reoccuring Reminder Methods
     
