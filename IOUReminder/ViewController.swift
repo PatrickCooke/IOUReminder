@@ -19,17 +19,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var iouArray = [IOUReminder]()
     @IBOutlet private weak var iouTableView: UITableView!
-    var sortmode = Bool()
-
+    var sortTitle = Bool()
+    
     
     //MARK: - Interactivity Methods
     
     @IBAction func sortTable(sender: UIBarButtonItem) {
-        if sortmode {
-            sortmode = false
+        print("Sort")
+        if sortTitle {
+            print("Sort false")
+            sortTitle = false
             self.refreshTableData()
         } else {
-            sortmode = true
+            print("Sort true")
+            sortTitle = true
             self.refreshTableData()
         }
     }
@@ -49,7 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-
+    
     //MARK: - Table View Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +67,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         formatter.dateFormat = "h:mm EEEE, MMM d, yyyy"
         let timestring = formatter.stringFromDate(currentIOU.iouDate!)
         cell.detailTextLabel!.text = timestring
+        if (currentIOU.iouPaidStatus == true) {
+            cell.backgroundColor = UIColor .grayColor()
+        }else {
+            cell.backgroundColor = UIColor .whiteColor()
+        }
         return cell
     }
     
@@ -71,7 +79,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func fetchEntries() -> [IOUReminder]? {
         let fetchRequest = NSFetchRequest(entityName: "IOUReminder")
-        if sortmode == true {
+        print("fetch")
+        if sortTitle {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "iouTitle", ascending: true)]
         } else {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "iouDate", ascending: true)]
@@ -85,7 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func refreshTableData() {
-        self.fetchEntries()
+        iouArray = fetchEntries()!
         iouTableView.reloadData()
     }
     
@@ -146,19 +155,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         checkEKAuthorizationStatus(.Reminder)
         //tempAddRecords()
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        iouArray = fetchEntries()!
-        print(iouArray.count)
         self.refreshTableData()
+        print(iouArray.count)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
 }
-

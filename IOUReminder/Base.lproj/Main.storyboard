@@ -69,7 +69,7 @@
                     <navigationItem key="navigationItem" title="IOUReminder" id="DD5-so-Tq9">
                         <barButtonItem key="leftBarButtonItem" title="Sort" id="7TG-LV-krv">
                             <connections>
-                                <action selector="sortTable:" destination="BYZ-38-t0r" id="Qb1-0l-nJY"/>
+                                <action selector="sortTable:" destination="BYZ-38-t0r" id="71l-Rs-Afa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lsw-ln-dvI">
@@ -106,26 +106,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-tb-L6Q">
-                                <rect key="frame" x="20" y="132" width="560" height="21"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="RbV-Jt-AhH">
+                                <rect key="frame" x="0.0" y="139" width="600" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="TpB-Ok-BB0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="RbV-Jt-AhH">
-                                <rect key="frame" x="0.0" y="161" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="wQX-cZ-81e"/>
+                                    <constraint firstAttribute="height" constant="100" id="wQX-cZ-81e"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="484770689.49172097">
                                     <!--2016-05-12 18:31:29 +0000-->
                                 </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeating Frequency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rai-fE-nVM">
-                                <rect key="frame" x="20" y="229" width="560" height="21"/>
+                                <rect key="frame" x="20" y="247" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="nzH-IG-CDg"/>
                                 </constraints>
@@ -134,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Advance Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqU-0P-VSS">
-                                <rect key="frame" x="20" y="326" width="560" height="21"/>
+                                <rect key="frame" x="20" y="344" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="z4N-Ha-049"/>
                                 </constraints>
@@ -143,7 +134,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOU Collected?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2e-2a-ycu">
-                                <rect key="frame" x="20" y="423" width="560" height="21"/>
+                                <rect key="frame" x="20" y="488" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="cRF-qd-p7g"/>
                                 </constraints>
@@ -152,28 +143,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NeY-9n-9jG">
-                                <rect key="frame" x="276" y="452" width="51" height="31"/>
+                                <rect key="frame" x="276" y="517" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NeY-9n-9jG" secondAttribute="height" multiplier="49:31" id="RuP-Ln-Wqt"/>
                                 </constraints>
                             </switch>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-rR-Gfb">
-                                <rect key="frame" x="0.0" y="355" width="600" height="60"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-rR-Gfb">
+                                <rect key="frame" x="0.0" y="373" width="600" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Ztc-cI-KzG"/>
+                                    <constraint firstAttribute="height" constant="100" id="Ztc-cI-KzG"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="484770885.60602599">
                                     <!--2016-05-12 18:34:45 +0000-->
                                 </date>
                             </datePicker>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yla-DJ-Wg8">
-                                <rect key="frame" x="20" y="258" width="560" height="29"/>
+                                <rect key="frame" x="20" y="276" width="560" height="29"/>
                                 <segments>
                                     <segment title="Once"/>
                                     <segment title="Weekly"/>
                                     <segment title="Monthy"/>
                                 </segments>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-tb-L6Q">
+                                <rect key="frame" x="20" y="110" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TpB-Ok-BB0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -187,7 +187,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="m4t-tb-L6Q" secondAttribute="leading" id="Dne-oI-iDw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RbV-Jt-AhH" secondAttribute="trailing" constant="-20" id="Eo2-NV-Sf1"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mqU-0P-VSS" secondAttribute="leading" id="Fhu-He-0a4"/>
-                            <constraint firstItem="V2e-2a-ycu" firstAttribute="top" secondItem="Cz0-rR-Gfb" secondAttribute="bottom" constant="8" id="Fmn-7r-61K"/>
+                            <constraint firstItem="V2e-2a-ycu" firstAttribute="top" secondItem="Cz0-rR-Gfb" secondAttribute="bottom" constant="15" id="Fmn-7r-61K"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m4t-tb-L6Q" secondAttribute="trailing" id="G5c-qM-LZa"/>
                             <constraint firstAttribute="leadingMargin" secondItem="rai-fE-nVM" secondAttribute="leading" id="H91-jy-1yG"/>
                             <constraint firstItem="NeY-9n-9jG" firstAttribute="centerX" secondItem="hmL-7b-Kjq" secondAttribute="centerX" id="Mpp-tG-tcO"/>
@@ -202,7 +202,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="NOL-vG-nl9" secondAttribute="leading" id="qOn-OT-0c7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yla-DJ-Wg8" secondAttribute="trailing" id="vPn-Uj-ccc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yla-DJ-Wg8" secondAttribute="leading" id="wIR-nY-MFs"/>
-                            <constraint firstItem="m4t-tb-L6Q" firstAttribute="top" secondItem="NOL-vG-nl9" secondAttribute="bottom" constant="30" id="y2L-LP-FaS"/>
+                            <constraint firstItem="m4t-tb-L6Q" firstAttribute="top" secondItem="NOL-vG-nl9" secondAttribute="bottom" constant="8" id="y2L-LP-FaS"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -255,6 +255,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jUv-0W-r3E"/>
+        <segue reference="bsr-Wi-uwf"/>
     </inferredMetricsTieBreakers>
 </document>

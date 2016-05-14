@@ -3,10 +3,10 @@
     <entity name="IOUReminder" representedClassName=".IOUReminder" syncable="YES">
         <attribute name="iouDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="iouFrequency" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="iouIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iouIdentifier" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="iouPaidStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="iouTimeInAdvance" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="iouTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iouTitle" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
     </entity>
     <elements>
         <element name="IOUReminder" positionX="-54" positionY="-9" width="128" height="135"/>

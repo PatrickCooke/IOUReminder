@@ -14,8 +14,8 @@
 		43099CA31CE4E93E00019B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43099CA21CE4E93E00019B66 /* Assets.xcassets */; };
 		43099CA61CE4E93E00019B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43099CA41CE4E93E00019B66 /* LaunchScreen.storyboard */; };
 		43099CBA1CE5053600019B66 /* IOUDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43099CB91CE5053600019B66 /* IOUDetailViewController.swift */; };
-		43099CC11CE50E5900019B66 /* IOUReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43099CBF1CE50E5900019B66 /* IOUReminder+CoreDataProperties.swift */; };
-		43099CC21CE50E5900019B66 /* IOUReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43099CC01CE50E5900019B66 /* IOUReminder.swift */; };
+		433946131CE791170093A8D7 /* IOUReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433946111CE791170093A8D7 /* IOUReminder+CoreDataProperties.swift */; };
+		433946141CE791170093A8D7 /* IOUReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433946121CE791170093A8D7 /* IOUReminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		43099CA51CE4E93E00019B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43099CA71CE4E93E00019B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43099CB91CE5053600019B66 /* IOUDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUDetailViewController.swift; sourceTree = "<group>"; };
-		43099CBF1CE50E5900019B66 /* IOUReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IOUReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		43099CC01CE50E5900019B66 /* IOUReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUReminder.swift; sourceTree = "<group>"; };
+		433946111CE791170093A8D7 /* IOUReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IOUReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		433946121CE791170093A8D7 /* IOUReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOUReminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +70,8 @@
 				43099CA41CE4E93E00019B66 /* LaunchScreen.storyboard */,
 				43099CA71CE4E93E00019B66 /* Info.plist */,
 				43099C9F1CE4E93E00019B66 /* IOUReminder.xcdatamodeld */,
-				43099CBF1CE50E5900019B66 /* IOUReminder+CoreDataProperties.swift */,
-				43099CC01CE50E5900019B66 /* IOUReminder.swift */,
+				433946111CE791170093A8D7 /* IOUReminder+CoreDataProperties.swift */,
+				433946121CE791170093A8D7 /* IOUReminder.swift */,
 			);
 			path = IOUReminder;
 			sourceTree = "<group>";
@@ -151,8 +151,8 @@
 				43099C9B1CE4E93E00019B66 /* ViewController.swift in Sources */,
 				43099C991CE4E93E00019B66 /* AppDelegate.swift in Sources */,
 				43099CBA1CE5053600019B66 /* IOUDetailViewController.swift in Sources */,
-				43099CC21CE50E5900019B66 /* IOUReminder.swift in Sources */,
-				43099CC11CE50E5900019B66 /* IOUReminder+CoreDataProperties.swift in Sources */,
+				433946141CE791170093A8D7 /* IOUReminder.swift in Sources */,
+				433946131CE791170093A8D7 /* IOUReminder+CoreDataProperties.swift in Sources */,
 				43099CA11CE4E93E00019B66 /* IOUReminder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
