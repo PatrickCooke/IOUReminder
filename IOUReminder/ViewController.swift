@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let timestring = formatter.stringFromDate(currentTime)
             cell.detailTextLabel!.text = timestring
         }
-        if (currentIOU.iouPaidStatus == true) {
+        if currentIOU.iouPaidStatus!.boolValue {
             cell.backgroundColor = UIColor .grayColor()
         }else {
             cell.backgroundColor = UIColor .whiteColor()
